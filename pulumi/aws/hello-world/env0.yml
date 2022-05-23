@@ -6,7 +6,6 @@ deploy:
       after:
         - rm -rf /opt/pulumi
         - npm i
-        - curl
         - ls /opt
         - ls /
         - ls .
