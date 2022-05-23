@@ -4,7 +4,6 @@ deploy:
   steps:
     setupVariables:
       after:
-        - rm -rf /opt/pulumi
         - npm i
         - ls /opt
         - ls /
