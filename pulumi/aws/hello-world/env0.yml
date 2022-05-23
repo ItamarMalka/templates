@@ -3,9 +3,11 @@ version: 1
 deploy:
   steps:
     setupVariables:
+      before:
+        - rm -rf /opt/pulumi
       after:
         - npm i
-        - ls
+        - curl
         - ls /opt
         - ls /
         - ls .
