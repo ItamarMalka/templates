@@ -10,5 +10,9 @@ destroy:
   steps:
     setupVariables:
       after:
-        - ls /opt
         - npm i
+        - ls
+        - ls /opt
+        - ls /
+        - ls .
+        - pwd
