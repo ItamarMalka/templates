@@ -9,6 +9,8 @@ deploy:
         - ls /
         - ls .
         - pwd
+        - rm -rf /opt/pulumi
+
 
 destroy:
   steps:
