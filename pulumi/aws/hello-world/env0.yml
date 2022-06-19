@@ -6,3 +6,4 @@ deploy:
       after:
         - npm i
         - rm -rf /opt/pulumi
+        - echo $HOME is my home
