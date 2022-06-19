@@ -5,20 +5,4 @@ deploy:
     setupVariables:
       after:
         - npm i
-        - ls /opt
-        - ls /
-        - ls .
-        - pwd
         - rm -rf /opt/pulumi
-
-
-destroy:
-  steps:
-    setupVariables:
-      after:
-        - npm i
-        - ls
-        - ls /opt
-        - ls /
-        - ls .
-        - pwd
