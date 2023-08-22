@@ -1,36 +1,26 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "3.41.0"
-    }
-  }
-}
-
 provider "aws" {
-  region = "us-east-1"
+  region                      = "us-east-1"
+  skip_credentials_validation = true
+  skip_requesting_account_id  = true
+  access_key                  = "mock_access_key"
+  secret_key                  = "mock_secret_key"
 }
 
-data "aws_ami" "ubuntu" {
-  most_recent = true
+resource "aws_instance" "web_app" {
+  ami           = "ami-674cbc1e"
+  instance_type = "m5.4xlarge"
 
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  root_block_device {
+    volume_size = 50
   }
 
-  owners = ["099720109477"]
+  ebs_block_device {
+    device_name = "my_data"
+    volume_type = "io1"
+    volume_size = 1000
+    iops        = 800
+  }
 }
 
 resource "null_resource" "null" {
-}
-
-resource "aws_instance" "example" {
-     ami = data.aws_ami.ubuntu.id
-     instance_type = "t2.micro"
-     availability_zone = "us-east-1"
-
-lifecycle {
-     ignore_changes = [ami]
-     }
 }
